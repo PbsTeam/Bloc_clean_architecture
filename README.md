@@ -8,6 +8,8 @@ This README explains **each folder, why it exists, and what goes inside** — so
 
 ## 🏗️ Project Folder Structure
 
+
+```dart
 lib/
 │
 ├── config/
@@ -38,6 +40,10 @@ lib/
 │
 ├── main.dart
 └── service_locator.dart
+```
+
+
+
 
 
 ---
