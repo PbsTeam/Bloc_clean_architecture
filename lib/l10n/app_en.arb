@@ -1,0 +1,10 @@
+{
+  "@@locale": "en",
+  "welcomeBack": "Welcome back!",
+  "loginHere": "Login Here",
+  "pleaseEnterEmail": "Please enter email",
+  "pleaseEnterAValidEmail": "Please enter a valid email",
+  "pleaseEnterPassword": "Please enter password",
+  "login": "Login",
+  "changeLanguage": "Change Language"
+}
