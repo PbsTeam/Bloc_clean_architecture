@@ -1,3 +1,4 @@
+import 'package:bloc_clean_architecture/core/utils/exceptions/theme_exception.dart';
 import 'package:flutter/material.dart';
 
 import '../colors/app_color.dart';
@@ -19,12 +20,13 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: Text(title,
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
-            color: AppColor.white,
-          ),
+          child: Text(
+            title,
+            style: context.theme.textTheme.titleMedium!.copyWith(
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+              color: AppColor.white,
+            ),
           ),
         ),
       ),

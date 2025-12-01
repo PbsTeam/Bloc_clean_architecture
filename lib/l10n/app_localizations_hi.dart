@@ -28,4 +28,19 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get changeLanguage => 'भाषा बदलें';
+
+  @override
+  String get changeTheme => 'थीम बदलें';
+
+  @override
+  String get movies => 'फ़िल्में';
+
+  @override
+  String get logoutText => 'क्या आप वाकई लॉगआउट करना चाहते हैं?';
+
+  @override
+  String get yes => 'हाँ';
+
+  @override
+  String get no => 'नहीं';
 }

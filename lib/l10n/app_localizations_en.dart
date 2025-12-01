@@ -28,4 +28,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get changeLanguage => 'Change Language';
+
+  @override
+  String get changeTheme => 'Change Theme';
+
+  @override
+  String get movies => 'Movies';
+
+  @override
+  String get logoutText => 'Are you sure you want to Logout?';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
 }

@@ -6,5 +6,11 @@
     "pleaseEnterAValidEmail": "कृपया एक मान्य ईमेल दर्ज करें",
     "pleaseEnterPassword": "कृपया पासवर्ड दर्ज करें",
     "login": "लॉगिन",
-    "changeLanguage": "भाषा बदलें"
+    "changeLanguage": "भाषा बदलें",
+    "changeTheme": "थीम बदलें",
+    "movies": "फ़िल्में",
+    "logoutText": "क्या आप वाकई लॉगआउट करना चाहते हैं?",
+    "yes": "हाँ",
+    "no": "नहीं"
+
 }

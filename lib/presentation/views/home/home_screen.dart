@@ -1,9 +1,11 @@
+import 'package:bloc_clean_architecture/core/utils/exceptions/theme_exception.dart';
 import 'package:bloc_clean_architecture/core/utils/local_storage/local_storage.dart';
 import 'package:bloc_clean_architecture/domain/usecases/get_movies_usecases.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../config/colors/app_color.dart';
 import '../../../config/components/loader_widget.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../../service_locator.dart';
 import '../../viewmodel/movies_viewmodel/movies_bloc.dart';
 import '../../viewmodel/movies_viewmodel/movies_event.dart';
@@ -21,20 +23,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
+
     return BlocProvider(
       create: (context) =>
           MoviesBloc(getMoviesUseCase: getIt<GetMoviesUseCase>())
             ..add(FetchMovies()),
 
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: context.theme.scaffoldBackgroundColor,
         appBar: AppBar(
           elevation: 4.0,
-          surfaceTintColor: Colors.white,
-          backgroundColor: Colors.white,
+          surfaceTintColor: context.theme.scaffoldBackgroundColor,
+          backgroundColor: context.theme.scaffoldBackgroundColor,
           title: Text(
-            'Movie\'s',
-            style: TextStyle(
+            localization.movies,
+            style: context.theme.textTheme.titleMedium!.copyWith(
               fontSize: 20,
               fontWeight: FontWeight.w600,
               color: AppColor.blue,
@@ -42,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           actions: [
             IconButton(
-              onPressed: () => showLogoutBottomSheet(context),
+              onPressed: () => showLogoutBottomSheet(context, localization),
               icon: Icon(Icons.logout, color: AppColor.blue),
             ),
           ],
@@ -86,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               : const SizedBox();
                         }
                         return Card(
-                          color: Colors.white,
+                          color: context.theme.cardColor,
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           elevation: 4.0,
                           child: ListTile(
@@ -102,10 +106,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             title: Text(
                               tvShows.name ?? '',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
+                              style: context.theme.textTheme.titleMedium!
+                                  .copyWith(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                             ),
                           ),
                         );
@@ -129,7 +134,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Future<bool?> showLogoutBottomSheet(BuildContext context) {
+  Future<bool?> showLogoutBottomSheet(
+    BuildContext context,
+    AppLocalizations localization,
+  ) {
     return showModalBottomSheet<bool>(
       context: context,
       isDismissible: true,
@@ -144,9 +152,13 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               const SizedBox(height: 20),
 
-              const Text(
-                "Are you sure you want to Logout?",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              Text(
+                localization.logoutText,
+                style: context.theme.textTheme.titleMedium!.copyWith(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
@@ -157,6 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Expanded(
                     child: SizedBox(
                       width: double.infinity,
+                      height: 45,
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
                           side: BorderSide(color: AppColor.blue, width: 1.5),
@@ -167,9 +180,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: () {
                           Navigator.pop(context, false);
                         },
-                        child: const Text(
-                          "NO",
-                          style: TextStyle(fontSize: 16, color: AppColor.blue),
+                        child: Text(
+                          localization.no,
+                          style: context.theme.textTheme.titleMedium!.copyWith(
+                            fontSize: 16,
+                            color: AppColor.blue,
+                          ),
                         ),
                       ),
                     ),
@@ -180,6 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Expanded(
                     child: SizedBox(
                       width: double.infinity,
+                      height: 45,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColor.blue,
@@ -191,8 +208,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           LocalStorage.instance.clearAll(context);
                         },
                         child: Text(
-                          "YES",
-                          style: TextStyle(fontSize: 16, color: AppColor.white),
+                          localization.yes,
+                          style: context.theme.textTheme.titleMedium!.copyWith(
+                            fontSize: 16,
+                            color: AppColor.white,
+                          ),
                         ),
                       ),
                     ),

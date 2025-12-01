@@ -6,5 +6,11 @@
   "pleaseEnterAValidEmail": "Please enter a valid email",
   "pleaseEnterPassword": "Please enter password",
   "login": "Login",
-  "changeLanguage": "Change Language"
+  "changeLanguage": "Change Language",
+  "changeTheme": "Change Theme",
+  "movies": "Movies",
+  "logoutText": "Are you sure you want to Logout?",
+  "yes": "Yes",
+  "no": "No"
+
 }

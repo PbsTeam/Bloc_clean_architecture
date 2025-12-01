@@ -1,3 +1,5 @@
+import 'package:bloc_clean_architecture/presentation/viewmodel/theme_viewmodel/theme_bloc.dart';
+import 'package:bloc_clean_architecture/presentation/viewmodel/theme_viewmodel/theme_viewmodel.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'config/components/app_storage.dart';
@@ -42,4 +44,13 @@ void serviceLocator() {
 
   ///Localization
   getIt.registerLazySingleton(() => LocalizationBloc());
+
+  ///Theme
+  getIt.registerLazySingleton(() => ThemeBloc());
+  /// ViewModel
+  getIt.registerLazySingleton<ThemeViewModel>(
+        () => ThemeViewModel(getIt<ThemeBloc>()),
+  );
+
+
 }

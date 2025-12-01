@@ -8,7 +8,9 @@ import '../../../core/utils/enums/enums.dart';
 import '../../../data/models/user/user_modal.dart';
 import '../../../domain/repositories/login_repository.dart';
 import '../../../domain/usecases/login_usecases.dart';
+import '../../../main.dart';
 import '../../../service_locator.dart';
+import '../theme_viewmodel/theme_viewmodel.dart';
 import 'login_state.dart';
 part 'login_event.dart';
 
@@ -23,6 +25,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginFormState> {
 
   final loginRepository = getIt.get<LoginRepository>();
   final debouncer = Debouncer(milliseconds: 300);
+  final themeVM = getIt<ThemeViewModel>();
 
   final formKey = GlobalKey<FormState>();
   _emailEvent(EmailEvent event, Emitter<LoginFormState> emit) {
@@ -34,6 +37,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginFormState> {
   }
 
   _submitButton(SubmitButtonEvent event, Emitter<LoginFormState> emit) async {
+
+    FocusScope.of(navigatorKey.currentContext!).unfocus();
+
     emit(state.copyWith(apiStatus: PostApiStatus.loading));
 
     try {
