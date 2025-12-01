@@ -42,10 +42,6 @@ lib/
 └── service_locator.dart
 ```
 
-
-
-
-
 ---
 
 ## 📌 Folder-by-Folder Explanation (Detailed)

@@ -13,10 +13,13 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
 
   @override
   Future<UserModal> userLogin({required Map data}) async {
-    final response = await _networkServices.postApiService(
-      url: ApiConstants.loginUrl,
-      data: data,
-    );
-    return UserModal.fromJson(response);
+    // final response = await _networkServices.postApiService(
+    //   url: ApiConstants.loginUrl,
+    //   data: data,
+    // );
+
+    await Future.delayed(Duration(seconds: 2));
+
+    return UserModal.fromJson({'token': 'token'});
   }
 }
